@@ -43,12 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AopAttribute.cs" />
     <Compile Include="CallTraceSink.cs" />
     <Compile Include="Foo.cs" />
     <Compile Include="CallTraceAttribute.cs" />
     <Compile Include="ObjectWithAspects.cs" />
-    <Compile Include="PerformanceAttribute.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
