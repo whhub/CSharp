@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace UserControlTest
@@ -11,10 +12,13 @@ namespace UserControlTest
         public MainWindow()
         {
             InitializeComponent();
+            SetGrid(1,1);
         }
 
         private void SetGrid(int row, int col)
         {
+            #region Add Or Remove Row and Col
+
             var rows = _grid.RowDefinitions;
             int curRow = rows.Count;
             var cols = _grid.ColumnDefinitions;
@@ -31,8 +35,44 @@ namespace UserControlTest
             {
                 cols.Add(new ColumnDefinition());
             }
-            if(rowDelta < 0) rows.RemoveRange(row, -rowDelta);
-            if(colDelta < 0) cols.RemoveRange(col, -colDelta);
+            if (rowDelta < 0) rows.RemoveRange(row, -rowDelta);
+            if (colDelta < 0) cols.RemoveRange(col, -colDelta);
+
+            #endregion Add Or Remove Row and Col
+
+            #region Add Or Remove Elements
+
+            int elementCount = row*col;
+            int curElementCount = curRow*curCol;
+            int elementDelta = elementCount - curElementCount;
+            for (int i = 0; i < elementDelta; i++)
+            {
+                _grid.Children.Add(PageFactory.Instance.GetPage());
+            }
+            for (int i = elementCount; i < curElementCount; i++)
+            {
+                PageFactory.Instance.ReservePage(_grid.Children[i] as Page);
+            }
+            if (elementDelta < 0) _grid.Children.RemoveRange(elementCount, -elementDelta);
+
+            #endregion Add Or Remove Elements
+
+            #region Refresh Element Location
+
+            for (int i = 0, elementIndex=0; i < row; i++)
+            {
+                for (int j = 0; j < col; j++)
+                {
+                    var uiElement = _grid.Children[elementIndex];
+                    Grid.SetRow(uiElement,i);
+                    Grid.SetColumn(uiElement,j);
+                    var page = uiElement as Page;
+                    elementIndex++;
+                    page.Text = elementIndex.ToString();
+                }
+            }
+            #endregion Refresh Element Location
+
         }
 
         private void Button1Click(object sender, RoutedEventArgs e)
