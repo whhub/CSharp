@@ -180,7 +180,7 @@ namespace ProjectBilling.Application.WPF
         #region Fields
 
         private const int NoneSelected = -1;
-        private IProjectsViewModel _vm;
+        private readonly IProjectsViewModel _vm;
 
         #endregion
     }

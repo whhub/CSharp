@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ProjectBilling.DataAccess;
 
 namespace ProjectBilling.RAD
@@ -18,24 +8,24 @@ namespace ProjectBilling.RAD
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
 
-            System.Windows.Data.CollectionViewSource projectViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("projectViewSource")));
+            var projectViewSource = ((System.Windows.Data.CollectionViewSource)(FindResource("projectViewSource")));
             // 通过设置 CollectionViewSource.Source 属性加载数据:
             // projectViewSource.Source = [一般数据源]
 
             projectViewSource.Source = new DataServiceStub().GetProjects();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void OnButton1Click(object sender, RoutedEventArgs e)
         {
             var selectedProject = nameComboBox.SelectedItem as Project;
             if (selectedProject != null)
@@ -64,7 +54,7 @@ namespace ProjectBilling.RAD
 
         }
 
-        private void nameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnNameComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var comboBox = sender as ComboBox;
 

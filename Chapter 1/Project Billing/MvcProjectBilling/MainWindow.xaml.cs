@@ -20,7 +20,7 @@ namespace MvcProjectBilling
             _controller.ShowProjectsView(this);
         }
 
-        private IProjectsController _controller;
+        private readonly IProjectsController _controller;
 
         private void OnGcCollectionButtonClicked(object sender, RoutedEventArgs e)
         {

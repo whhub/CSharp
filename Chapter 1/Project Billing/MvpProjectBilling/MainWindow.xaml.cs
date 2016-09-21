@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace MvpProjectBilling
 {
@@ -23,6 +22,6 @@ namespace MvpProjectBilling
             view.Show();
         }
 
-        private IProjectsModel _model;
+        private readonly IProjectsModel _model;
     }
 }
