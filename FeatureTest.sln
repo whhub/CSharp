@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOPTest", "FeatureTest\AOPT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlTest", "UserControlTest\UserControlTest.csproj", "{EBD82360-FEC5-4AC7-8278-A88BF67E31B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadTest", "ThreadTest\ThreadTest.csproj", "{BBF9569D-EBFE-413F-A3A6-421DBB5ABA19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,6 +21,10 @@ Global
 		{EBD82360-FEC5-4AC7-8278-A88BF67E31B8}.Debug|x86.Build.0 = Debug|x86
 		{EBD82360-FEC5-4AC7-8278-A88BF67E31B8}.Release|x86.ActiveCfg = Release|x86
 		{EBD82360-FEC5-4AC7-8278-A88BF67E31B8}.Release|x86.Build.0 = Release|x86
+		{BBF9569D-EBFE-413F-A3A6-421DBB5ABA19}.Debug|x86.ActiveCfg = Debug|x86
+		{BBF9569D-EBFE-413F-A3A6-421DBB5ABA19}.Debug|x86.Build.0 = Debug|x86
+		{BBF9569D-EBFE-413F-A3A6-421DBB5ABA19}.Release|x86.ActiveCfg = Release|x86
+		{BBF9569D-EBFE-413F-A3A6-421DBB5ABA19}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

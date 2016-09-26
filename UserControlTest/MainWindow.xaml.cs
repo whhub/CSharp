@@ -49,7 +49,7 @@ namespace UserControlTest
             {
                 _grid.Children.Add(PageFactory.Instance.GetPage());
             }
-            for (int i = elementCount; i < curElementCount; i++)
+            for (int i = curElementCount-1; i >= elementCount; i--)
             {
                 PageFactory.Instance.ReservePage(_grid.Children[i] as Page);
             }
