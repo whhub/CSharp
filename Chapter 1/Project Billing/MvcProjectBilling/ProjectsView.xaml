@@ -1,0 +1,22 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="MvcProjectBilling.ProjectsView"
+	x:Name="Window"
+	Title="ProjectsView"
+	Width="250" Height="250" MinWidth="180" MinHeight="180" Padding="5"
+	FocusManager.FocusedElement="{Binding ElementName=ProjectsComboBox}"
+    Closed="OnProjectsViewWindowClosed">
+
+	<UniformGrid x:Name="LayoutRoot" Columns="2">
+		<Label Content="Projects"/>
+		<ComboBox Name="ProjectsComboBox" Margin="5" 
+			SelectionChanged="OnProjectsComboBoxSelectionChanged" />
+		<Label Content="Estimated Cost:" />
+		<TextBox Name="EstimatedTextBox" Margin="5" IsEnabled="False"/>
+		<Label Content="Actual Cost:"/>
+		<TextBox Name="ActualTextBox" Margin="5" IsEnabled="False"/>
+		<Button Name="UpdateButton" Content="Update" Margin="5"
+			Click="OnUpdateButtonClicked" />
+	</UniformGrid>
+</Window>
