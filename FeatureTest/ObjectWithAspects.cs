@@ -9,4 +9,9 @@ namespace FeatureTest
     abstract class ObjectWithAspects : ContextBoundObject
     {
     }
+
+    abstract class SecondaryObjectWithAspects : ObjectWithAspects
+    {
+        
+    }
 }

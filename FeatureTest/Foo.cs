@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace FeatureTest
 {
-    class Foo : ObjectWithAspects
+    class Foo : SecondaryObjectWithAspects
     {
         private bool _fooProperty;
 
