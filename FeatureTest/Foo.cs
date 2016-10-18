@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace FeatureTest
 {
-    class Foo : SecondaryObjectWithAspects
+    class Foo : ThirdObjectWithAspects 
     {
         private bool _fooProperty;
 
@@ -29,5 +29,13 @@ namespace FeatureTest
             get { return _fooProperty; }
             set { _fooProperty = value; }
         }
+    }
+
+    class Foo2 : Foo
+    {
+         public new void Fun2()
+         {
+             
+         }
     }
 }

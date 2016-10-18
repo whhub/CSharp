@@ -14,4 +14,9 @@ namespace FeatureTest
     {
         
     }
+
+    abstract class ThirdObjectWithAspects : SecondaryObjectWithAspects
+    {
+        
+    }
 }

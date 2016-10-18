@@ -9,7 +9,7 @@ namespace FeatureTest
     {
         static void Main(string[] args)
         {
-            var foo = new Foo();
+            var foo = new Foo2();
 
             //try
             //{
@@ -24,6 +24,8 @@ namespace FeatureTest
             //    Console.WriteLine("here" + e.Message);
             //}
             foo.Fun2();
+            var foo2 = new Foo();
+            foo2.Fun2();
         }
     }
 }
