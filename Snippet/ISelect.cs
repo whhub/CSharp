@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Input;
 
-namespace UIH.Mcsf.Filming.DataModel
+namespace Foo 
 {
     public interface ISelect
     {
@@ -11,9 +12,10 @@ namespace UIH.Mcsf.Filming.DataModel
         bool IsFocused { get; set; }
         event EventHandler<BoolEventArgs> SelectedChanged;
         event EventHandler<BoolEventArgs> FocusedChanged;
+        event EventHandler<ClickStatusEventArgs> Clicked;
     }
 
-    public class SelectableList<T> : List<T> where T : ISelect
+    public class SelectableList<T> : List<T> where T : class, ISelect
     {
         private int _focus;
         private int Focus
@@ -111,22 +113,76 @@ namespace UIH.Mcsf.Filming.DataModel
             }
 
         }
+
+        protected void ElementOnClicked(object sender, ClickStatusEventArgs clickStatusEventArgs)
+        {
+            ClickOn(sender as T, clickStatusEventArgs.ClickStatus);
+        }
+
+        ~SelectableList()
+        {
+            ForEach(e=>e.Clicked -= ElementOnClicked);
+        }
+
+        #region [--Override--]
+
+        protected void InsertRange(int index, IEnumerable<T> elements, bool isSelected=false)
+        {
+            var enumerable = elements as List<T> ?? elements.ToList();
+            foreach (var element in enumerable)
+            {
+                element.IsSelected = true;
+                element.Clicked -= ElementOnClicked;
+                element.Clicked += ElementOnClicked;
+            }
+            base.AddRange(enumerable);
+        }
+
+        protected new void AddRange(IEnumerable<T> elements)
+        {
+            var enumerable = elements as List<T> ?? elements.ToList();
+            foreach (var element in enumerable)
+            {
+                element.Clicked -= ElementOnClicked;
+                element.Clicked += ElementOnClicked;
+            }
+            base.AddRange(enumerable);
+        }
+
+        protected new void RemoveRange(int index, int count)
+        {
+            var elements = GetRange(index, count);
+            elements.ForEach(e => e.Clicked -= ElementOnClicked);
+            base.RemoveRange(index, count);
+        }
+
+
+        #endregion [--Override--]
     }
 
     public class ClickStatus
     {
-        public ClickStatus(bool isLeftMouseButtonClicked, bool isRightMouseButtonClicked, bool isCtrlPressed,
-                           bool isShiftPressed)
+        public ClickStatus(bool isLeftMouseButtonClicked, bool isRightMouseButtonClicked)
         {
             IsLeftMouseButtonClicked = isLeftMouseButtonClicked;
             IsRightMouseButtonClicked = isRightMouseButtonClicked;
-            IsCtrlPressed = isCtrlPressed;
-            IsShiftPressed = isShiftPressed;
+            IsCtrlPressed = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+            IsShiftPressed = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
         }
 
         public bool IsLeftMouseButtonClicked { get; private set; }
         public bool IsRightMouseButtonClicked { get; private set; }
         public bool IsCtrlPressed { get; private set; }
         public bool IsShiftPressed { get; private set; }
+    }
+
+    public class ClickStatusEventArgs : EventArgs
+    {
+        public ClickStatusEventArgs(ClickStatus clickStatus)
+        {
+            ClickStatus = clickStatus;
+        }
+
+        public ClickStatus ClickStatus { get; private set; }
     }
 }
