@@ -1,0 +1,42 @@
+<<<<<<< HEAD
+Thumbs.db
+=======
+
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
+>>>>>>> b20c6e42461d23fc8150d364675f888e8a5b91b3
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+<<<<<<< HEAD
+*.sln.docstates
+=======
+>>>>>>> b20c6e42461d23fc8150d364675f888e8a5b91b3
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+<<<<<<< HEAD
+*.vssscc
+$tf*/
+=======
+>>>>>>> b20c6e42461d23fc8150d364675f888e8a5b91b3

@@ -54,7 +54,9 @@
     <Compile Include="Quizs\_131002_2To10.cs" />
     <Compile Include="Quizs\_131003Sort.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="DataStructure.EAP" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
