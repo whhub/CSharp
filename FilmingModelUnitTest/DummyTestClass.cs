@@ -28,6 +28,21 @@ namespace UnitTestExample.UT
             return 1;
         }
 
+        public void CallMeFirst()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public int CallMeTwice(string s)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void CallMeLast()
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
     }
 }

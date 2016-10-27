@@ -13,5 +13,20 @@
         {
             return _dependency.GetValue(s);
         }
+
+        public void CallMeFirst()
+        {
+            _dependency.CallMeFirst();
+        }
+
+        public void CallMeLast()
+        {
+            _dependency.CallMeLast();
+        }
+
+        public int CallMeTwice(string s)
+        {
+            return _dependency.CallMeTwice(s);
+        }
     }
 }
