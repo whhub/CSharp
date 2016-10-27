@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<TestSettings name="本地" id="e23f5a44-c177-4747-ad5e-d41204e0fb62" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
-  <Description>这些设置为本地测试运行的默认测试设置。</Description>
+<TestSettings name="Local" id="e23f5a44-c177-4747-ad5e-d41204e0fb62" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Description>These are default test settings for a local test run.</Description>
   <Deployment enabled="false" />
   <Execution>
     <TestTypeSpecific />
