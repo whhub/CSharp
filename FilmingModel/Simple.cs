@@ -1,6 +1,6 @@
 ﻿namespace UnitTestExample
 {
-    public class StringUtilities
+    public class Simple
     {
         public int CountOccurences(string stringToCheck, string stringToFind)
         {

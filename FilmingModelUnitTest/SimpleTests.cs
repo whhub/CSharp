@@ -3,7 +3,7 @@
 namespace UnitTestExample.UT
 {
     [TestClass]
-    public class UtilitiesTests
+    public class SimpleTests
     {
         [TestMethod]
         public void ShouldFindOneYInMysterious()
@@ -11,7 +11,7 @@ namespace UnitTestExample.UT
             var stringToCheck = "mysterious";
             var stringToFind = "y";
             var expectedResult = 1;
-            var classUnderTest = new StringUtilities();
+            var classUnderTest = new Simple();
 
             var actualResult = classUnderTest.CountOccurences(stringToCheck, stringToFind);
 
@@ -24,7 +24,7 @@ namespace UnitTestExample.UT
             var stringToCheck = "mysterious";
             var stringToFind = "s";
             var expectedResult = 2;
-            var classUnderTest = new StringUtilities();
+            var classUnderTest = new Simple();
 
             var actualResult = classUnderTest.CountOccurences(stringToCheck, stringToFind);
 
@@ -37,7 +37,7 @@ namespace UnitTestExample.UT
             var stringToCheck = "mySterious";
             var stringToFind = "s";
             var expectedResult = 2;
-            var classUnderTest = new StringUtilities();
+            var classUnderTest = new Simple();
 
             var actualResult = classUnderTest.CountOccurences(stringToCheck, stringToFind);
 
@@ -50,7 +50,7 @@ namespace UnitTestExample.UT
         {
             var stringToFind = "s";
             var expectedResult = -1;
-            var classUnderTest = new StringUtilities();
+            var classUnderTest = new Simple();
 
             var actualResult = classUnderTest.CountOccurences(null, stringToFind);
 

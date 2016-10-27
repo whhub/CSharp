@@ -45,8 +45,9 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DummyTestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UtilitiesTests.cs" />
+    <Compile Include="SimpleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FilmingModel\UnitTestExample.csproj">
