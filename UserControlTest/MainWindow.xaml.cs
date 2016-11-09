@@ -1,18 +1,18 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace UserControlTest
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
-            SetGrid(1,1);
+            SetGrid(1, 1);
         }
 
         private void SetGrid(int row, int col)
@@ -20,18 +20,18 @@ namespace UserControlTest
             #region Add Or Remove Row and Col
 
             var rows = _grid.RowDefinitions;
-            int curRow = rows.Count;
+            var curRow = rows.Count;
             var cols = _grid.ColumnDefinitions;
-            int curCol = cols.Count;
+            var curCol = cols.Count;
 
-            int rowDelta = row - curRow;
-            int colDelta = col - curCol;
+            var rowDelta = row - curRow;
+            var colDelta = col - curCol;
 
-            for (int i = 0; i < rowDelta; i++)
+            for (var i = 0; i < rowDelta; i++)
             {
                 rows.Add(new RowDefinition());
             }
-            for (int i = 0; i < colDelta; i++)
+            for (var i = 0; i < colDelta; i++)
             {
                 cols.Add(new ColumnDefinition());
             }
@@ -42,14 +42,14 @@ namespace UserControlTest
 
             #region Add Or Remove Elements
 
-            int elementCount = row*col;
-            int curElementCount = curRow*curCol;
-            int elementDelta = elementCount - curElementCount;
-            for (int i = 0; i < elementDelta; i++)
+            var elementCount = row*col;
+            var curElementCount = curRow*curCol;
+            var elementDelta = elementCount - curElementCount;
+            for (var i = 0; i < elementDelta; i++)
             {
                 _grid.Children.Add(PageFactory.Instance.GetPage());
             }
-            for (int i = curElementCount-1; i >= elementCount; i--)
+            for (var i = curElementCount - 1; i >= elementCount; i--)
             {
                 PageFactory.Instance.ReservePage(_grid.Children[i] as Page);
             }
@@ -59,20 +59,20 @@ namespace UserControlTest
 
             #region Refresh Element Location
 
-            for (int i = 0, elementIndex=0; i < row; i++)
+            for (int i = 0, elementIndex = 0; i < row; i++)
             {
-                for (int j = 0; j < col; j++)
+                for (var j = 0; j < col; j++)
                 {
                     var uiElement = _grid.Children[elementIndex];
-                    Grid.SetRow(uiElement,i);
-                    Grid.SetColumn(uiElement,j);
+                    Grid.SetRow(uiElement, i);
+                    Grid.SetColumn(uiElement, j);
                     var page = uiElement as Page;
                     elementIndex++;
                     page.Text = elementIndex.ToString();
                 }
             }
-            #endregion Refresh Element Location
 
+            #endregion Refresh Element Location
         }
 
         private void Button1Click(object sender, RoutedEventArgs e)
@@ -104,5 +104,18 @@ namespace UserControlTest
         {
             SetGrid(2, 4);
         }
+
+        private Grid GetGrid(DependencyObject dependencyObject, string name)
+        {
+            for (var i = 0; i < VisualTreeHelper.GetChildrenCount(dependencyObject); i++)
+            {
+                var child = VisualTreeHelper.GetChild(dependencyObject, i);
+                var grid = child as Grid;
+                if (grid != null && grid.Name == name) return grid;
+
+                var grandChild = GetGrid(child, name);
+                if (grandChild != null) return grandChild;
+            }
+            return null;
+        }
     }
-}
