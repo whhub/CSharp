@@ -1,12 +1,45 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
+using Northwind.Application;
 using Northwind.Data;
-using System.Data.Objects;
 
 namespace Northwind.ViewModel
 {
     public class MainWindowViewModel
     {
+        private readonly IUIDataProvider _dataProvider;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="T:System.Object" /> class.
+        /// </summary>
+        public MainWindowViewModel(IUIDataProvider dataProvider)
+        {
+            _dataProvider = dataProvider;
+
+            Tools = new ObservableCollection<ToolViewModel>
+            {
+                new AToolViewModel(),
+                new BToolViewModel()
+            };
+        }
+
+        private void GetCustomers()
+        {
+            _customers = _dataProvider.GetCustomers();
+        }
+
+        #region [--Properties--]
+
+        public string Name
+        {
+            get { return "Northwind"; }
+        }
+
+        public string ControlPanelName
+        {
+            get { return "Control Panel"; }
+        }
+
         private IList<Customer> _customers;
 
         public IList<Customer> Customers
@@ -18,10 +51,8 @@ namespace Northwind.ViewModel
             }
         }
 
-        private void GetCustomers()
-        {
-            _customers = new NORTHWNDEntities().Customers.ToList();
-        }
+        public ObservableCollection<ToolViewModel> Tools { get; set; }
+
+        #endregion
     }
-    
 }

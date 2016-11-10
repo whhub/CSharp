@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B8D21D8C-C166-4240-9231-7574B7D81684}</ProjectGuid>
+    <ProjectGuid>{D5774490-A799-4FC7-A147-296574ED6652}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Northwind.ViewModel</RootNamespace>
-    <AssemblyName>Northwind.ViewModel</AssemblyName>
+    <RootNamespace>Northwind.Application</RootNamespace>
+    <AssemblyName>Northwind.Application</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,16 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="IUIDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ToolViewModel.cs" />
-    <Compile Include="ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.Application\Northwind.Application.csproj">
-      <Project>{D5774490-A799-4FC7-A147-296574ED6652}</Project>
-      <Name>Northwind.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Northwind.Data\Northwind.Data.csproj">
       <Project>{25E6E80F-5C39-42D6-A1AB-E49B977E8936}</Project>
       <Name>Northwind.Data</Name>

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Northwind.Application;
 
 namespace Northwind.ViewModel
 {
     public class ViewModelLocator
     {
         public static MainWindowViewModel MainWindowViewModelStatic
-            = new MainWindowViewModel();
+            = new MainWindowViewModel(new UIDataProvider());
     }
 }
