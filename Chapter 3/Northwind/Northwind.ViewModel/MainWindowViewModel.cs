@@ -21,13 +21,6 @@ namespace Northwind.ViewModel
             Tools = new ObservableCollection<ToolViewModel>();
         }
 
-        private void GetCustomers()
-        {
-            _customers = _dataProvider.GetCustomers();
-
-            Tools.Add(new CustomerDetailsViewModel(_dataProvider, "ALFKI"));
-        }
-
         public void ShowCustomerDetails()
         {
             if (string.IsNullOrEmpty(SelectedCustomerID))
@@ -42,6 +35,74 @@ namespace Northwind.ViewModel
             }
 
             SetCurrentTool(customerDetailsViewModel);
+        }
+
+        #region [--Command--]
+
+        private bool IsCustomerSelected()
+        {
+            return !string.IsNullOrEmpty(SelectedCustomerID);
+        }
+
+        private Command _showDetailsCommand;
+
+        public Command ShowDetailsCommand
+        {
+            get
+            {
+                return _showDetailsCommand ??
+                       (_showDetailsCommand = new Command(p => ShowCustomerDetails(), p => IsCustomerSelected()));
+            }
+        }
+
+        #endregion
+
+        #region [--Properties--]
+
+        public string Name
+        {
+            get { return "Northwind"; }
+        }
+
+        public string ControlPanelName
+        {
+            get { return "Control Panel"; }
+        }
+
+        private IList<Customer> _customers;
+        private string _selectedCustomerID;
+
+        public IList<Customer> Customers
+        {
+            get
+            {
+                if (_customers == null) GetCustomers();
+                return _customers;
+            }
+        }
+
+        public ObservableCollection<ToolViewModel> Tools { get; set; }
+
+        public string SelectedCustomerID
+        {
+            get { return _selectedCustomerID; }
+            set
+            {
+                if(_selectedCustomerID == value) return;
+                _selectedCustomerID = value;
+                ShowDetailsCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        #endregion
+
+        #region [--Private Methods--]
+
+        private void GetCustomers()
+        {
+            _customers = _dataProvider.GetCustomers();
+
+            Tools.Add(new CustomerDetailsViewModel(_dataProvider, "ALFKI"));
         }
 
         private void SetCurrentTool(ToolViewModel currentTool)
@@ -60,33 +121,6 @@ namespace Northwind.ViewModel
         {
             return Tools.OfType<CustomerDetailsViewModel>().FirstOrDefault(c => c.Customer.CustomerID == customerID);
         }
-
-        #region [--Properties--]
-
-        public string Name
-        {
-            get { return "Northwind"; }
-        }
-
-        public string ControlPanelName
-        {
-            get { return "Control Panel"; }
-        }
-
-        private IList<Customer> _customers;
-
-        public IList<Customer> Customers
-        {
-            get
-            {
-                if (_customers == null) GetCustomers();
-                return _customers;
-            }
-        }
-
-        public ObservableCollection<ToolViewModel> Tools { get; set; }
-
-        public string SelectedCustomerID { get; set; }
 
         #endregion
     }

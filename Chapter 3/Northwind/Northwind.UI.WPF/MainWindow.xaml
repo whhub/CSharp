@@ -47,7 +47,7 @@
 					Height="180"
 					Width="250" />
                     <ContentControl Margin="0, 3">
-                        <Hyperlink Click="Hyperlink_OnClick">
+                        <Hyperlink Command="{Binding ShowDetailsCommand}">
                             <TextBlock Text="Show Details"></TextBlock>
                         </Hyperlink>
                     </ContentControl>
