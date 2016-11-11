@@ -38,12 +38,21 @@
 						</TextBlock.LayoutTransform>	
 					</TextBlock>
 				</Expander.Header>
+                <StackPanel>
 				<ListBox ItemsSource="{Binding Customers}" 
 					DisplayMemberPath="CompanyName"
+                    SelectedValuePath="CustomerID"
+                    SelectedValue="{Binding SelectedCustomerID}"
 					VerticalAlignment="Top"
 					Height="180"
 					Width="250" />
-			</Expander>
+                    <ContentControl Margin="0, 3">
+                        <Hyperlink Click="Hyperlink_OnClick">
+                            <TextBlock Text="Show Details"></TextBlock>
+                        </Hyperlink>
+                    </ContentControl>
+                </StackPanel>
+            </Expander>
 			
 			<TabControl ItemsSource="{Binding Tools}"  Margin="4" Grid.Row="0" Grid.Column="1"
 				IsSynchronizedWithCurrentItem="True">

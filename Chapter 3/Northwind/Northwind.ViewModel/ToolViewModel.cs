@@ -1,23 +1,23 @@
-﻿namespace Northwind.ViewModel
+﻿using Northwind.Application;
+using Northwind.Data;
+
+namespace Northwind.ViewModel
 {
     public class ToolViewModel
     {
         public string DisplayName { get; set; }
     }
 
-    public class AToolViewModel : ToolViewModel
+    public class CustomerDetailsViewModel : ToolViewModel
     {
-        public AToolViewModel()
-        {
-            DisplayName = "A";
-        }
-    }
+        public Customer Customer { get; set; }
 
-    public class BToolViewModel : ToolViewModel
-    {
-        public BToolViewModel()
+        public CustomerDetailsViewModel(IUIDataProvider dataProvider, string customerID)
         {
-            DisplayName = "B";
+            Customer = dataProvider.GetCustomer(customerID);
+
+            if(Customer != null)
+                DisplayName = Customer.CompanyName;
         }
     }
 }
