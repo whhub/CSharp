@@ -4,9 +4,12 @@
                     xmlns:wpf="clr-namespace:Northwind.UI.WPF">
     <Color x:Key="MainBlue">#FF145E9D</Color>
     <SolidColorBrush x:Key="MainBlueBrush" Color="{StaticResource MainBlue}" />
-    
+
     <DataTemplate
         DataType="{x:Type viewModel:CustomerDetailsViewModel}">
         <wpf:CustomerDetails />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModel:OrdersViewModel}">
+        <wpf:Orders />
     </DataTemplate>
 </ResourceDictionary>

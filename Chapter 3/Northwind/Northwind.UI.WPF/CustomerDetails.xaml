@@ -81,5 +81,8 @@
                          Grid.Row="7" Grid.Column="2" />
             </Grid>
         </GroupBox>
+        <GroupBox Header="Orders" Grid.Row="2">
+            <ContentControl Content="{Binding Orders}"/>
+        </GroupBox>
     </Grid>
 </UserControl>
