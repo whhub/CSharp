@@ -1,0 +1,17 @@
+﻿<Window x:Class="UsingNonMVVMElements.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:usingNonMvvmElements="clr-namespace:UsingNonMVVMElements"
+        Title="MainWindow" Height="688" Width="888">
+    <Window.DataContext>
+        <usingNonMvvmElements:MainWindowViewModel />
+    </Window.DataContext>
+    <DockPanel x:Name="LayoutRoot" LastChildFill="True">
+        <DockPanel DockPanel.Dock="Top">
+            <Button DockPanel.Dock="Right" Content="Go" VerticalAlignment="Top" Command="{Binding NavigateUrlCommand}" Background="Aqua"/>
+            <TextBox DockPanel.Dock="Left" HorizontalAlignment="Stretch" VerticalAlignment="Top" Name="textBoxUrl" Background="Aquamarine"
+                     Text="{Binding UserSuggestedSourcePage}" />
+        </DockPanel>
+        <WebBrowser DockPanel.Dock="Bottom" usingNonMvvmElements:WebBrowserAttachedBehavior.SourcePage="{Binding SourcePage}" />
+    </DockPanel>
+</Window>

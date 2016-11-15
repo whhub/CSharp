@@ -56,6 +56,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.UT", "TicTacToe.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Services", "TicTacToe.Services\TicTacToe.Services.csproj", "{1182B05B-FBCE-4C23-8DA5-23E20523A52F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Using Non-MVVM Third-party Controls", "Using Non-MVVM Third-party Controls", "{075A22BD-1914-48D2-9ED6-A2A177F30E46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingNonMVVMElements", "UsingNonMVVMElements\UsingNonMVVMElements.csproj", "{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = FeatureTest.vsmdi
@@ -269,6 +273,16 @@ Global
 		{1182B05B-FBCE-4C23-8DA5-23E20523A52F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1182B05B-FBCE-4C23-8DA5-23E20523A52F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1182B05B-FBCE-4C23-8DA5-23E20523A52F}.Release|x86.ActiveCfg = Release|Any CPU
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Debug|x86.ActiveCfg = Debug|x86
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Debug|x86.Build.0 = Debug|x86
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Release|Any CPU.ActiveCfg = Release|x86
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Release|x86.ActiveCfg = Release|x86
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -286,5 +300,6 @@ Global
 		{4DACB1C0-8425-426A-9B23-370E5368DE77} = {DE218D75-2D48-4F27-A1D7-2C974DA4F058}
 		{A255D882-799C-48B0-8B79-DBCB24117C57} = {DE218D75-2D48-4F27-A1D7-2C974DA4F058}
 		{BD5CDEC5-7ADE-4C50-987A-C144C9CD2958} = {DE218D75-2D48-4F27-A1D7-2C974DA4F058}
+		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF} = {075A22BD-1914-48D2-9ED6-A2A177F30E46}
 	EndGlobalSection
 EndGlobal

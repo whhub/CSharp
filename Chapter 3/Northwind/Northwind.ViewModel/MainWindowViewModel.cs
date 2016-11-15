@@ -11,30 +11,23 @@ namespace Northwind.ViewModel
     public class MainWindowViewModel
     {
         private readonly IUIDataProvider _dataProvider;
+        private readonly IToolManager _toolManager;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="T:System.Object" /> class.
         /// </summary>
-        public MainWindowViewModel(IUIDataProvider dataProvider)
+        public MainWindowViewModel(IUIDataProvider dataProvider, IToolManager toolManager)
         {
             _dataProvider = dataProvider;
-            Tools = new ObservableCollection<ToolViewModel>();
+            _toolManager = toolManager;
         }
 
         public void ShowCustomerDetails()
         {
-            if (string.IsNullOrEmpty(SelectedCustomerID))
-                throw new InvalidOperationException("SelectedCustomerID can't be null");
-
-            var customerDetailsViewModel = GetCustomerDetailsTool(SelectedCustomerID);
-
-            if (customerDetailsViewModel == null)
-            {
-                customerDetailsViewModel = new CustomerDetailsViewModel(_dataProvider, SelectedCustomerID);
-                Tools.Add(customerDetailsViewModel);
-            }
-
-            SetCurrentTool(customerDetailsViewModel);
+            if (!IsCustomerSelected())
+                throw new InvalidOperationException("Unable to show customer because no customer is selected");
+            _toolManager.OpenTool(c => c.Customer.CustomerID == SelectedCustomerID,
+                () => new CustomerDetailsViewModel(_dataProvider, SelectedCustomerID));
         }
 
         #region [--Command--]
@@ -81,14 +74,17 @@ namespace Northwind.ViewModel
             }
         }
 
-        public ObservableCollection<ToolViewModel> Tools { get; set; }
+        public ObservableCollection<ToolViewModel> Tools
+        {
+            get { return _toolManager.Tools; }
+        }
 
         public string SelectedCustomerID
         {
             get { return _selectedCustomerID; }
             set
             {
-                if(_selectedCustomerID == value) return;
+                if (_selectedCustomerID == value) return;
                 _selectedCustomerID = value;
                 ShowDetailsCommand.RaiseCanExecuteChanged();
             }
