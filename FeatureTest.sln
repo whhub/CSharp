@@ -60,6 +60,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Using Non-MVVM Third-party 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingNonMVVMElements", "UsingNonMVVMElements\UsingNonMVVMElements.csproj", "{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageTests", "LanguageTests\LanguageTests.csproj", "{CEDE3347-B7EE-461D-B779-48972DB09855}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = FeatureTest.vsmdi
@@ -283,6 +285,16 @@ Global
 		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Release|Mixed Platforms.Build.0 = Release|x86
 		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Release|x86.ActiveCfg = Release|x86
 		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Release|x86.Build.0 = Release|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Debug|x86.ActiveCfg = Debug|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Debug|x86.Build.0 = Debug|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Release|Any CPU.ActiveCfg = Release|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Release|Mixed Platforms.Build.0 = Release|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Release|x86.ActiveCfg = Release|x86
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
