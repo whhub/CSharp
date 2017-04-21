@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using RapidMEF.Diagnostics;
 
 namespace MEFCalculator
 {
     internal class Program
     {
         private CompositionContainer _container;
-        [Import(typeof (ICalculator))] public ICalculator Calculator;
+        [Import] public ICalculator Calculator;
 
         public Program()
         {
             CreateCompositionContainer();
 
             ComposeParts();
+
+            new CompositionContainerVisualizer(_container).Show();
         }
 
         private static void Main()
