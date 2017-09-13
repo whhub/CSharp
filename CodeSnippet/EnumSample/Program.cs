@@ -18,7 +18,7 @@ namespace EnumSample
         {
             foreach (var value in Enum.GetValues(typeof(FooEnum)))
             {
-                Console.WriteLine(value);
+                Console.WriteLine(string.Format("{0} of name {1}", (int)value, Enum.GetName(typeof(FooEnum), value)));
             }
         }
     }
