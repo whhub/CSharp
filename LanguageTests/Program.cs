@@ -6,11 +6,39 @@ namespace LanguageTests
     {
         static void Main(string[] args)
         {
-            var c = new C2();
-            Console.WriteLine(c.Count());
+            #region [--Interface Inheritance Test--]
+            //var c = new C2();
+            //Console.WriteLine(c.Count());
+            #endregion
+
+            #region [--Inheritance Test--]
+
+            var b = new B();
+            b.MethodA();
+
+            #endregion
         }
     }
 
+    #region [--Inheritance Test--]
+
+    class A
+    {
+        public void MethodA()
+        {
+            Console.WriteLine("MethodA");
+        }
+    }
+
+    class B : A
+    {
+        
+    }
+    
+    #endregion
+
+
+    #region [--Interface Inheritance Test--]
 
     interface I1<T>
     {
@@ -43,4 +71,6 @@ namespace LanguageTests
     {
         
     }
+
+    #endregion
 }
