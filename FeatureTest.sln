@@ -62,6 +62,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingNonMVVMElements", "Usi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageTests", "LanguageTests\LanguageTests.csproj", "{CEDE3347-B7EE-461D-B779-48972DB09855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemTest", "FileSystemTest\FileSystemTest.csproj", "{C2438AFA-6E6A-4144-A0B7-42413DAA6921}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = FeatureTest.vsmdi
@@ -142,7 +144,12 @@ Global
 		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}.Release|Any CPU.ActiveCfg = Release|x86
 		{CEDE3347-B7EE-461D-B779-48972DB09855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDE3347-B7EE-461D-B779-48972DB09855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEDE3347-B7EE-461D-B779-48972DB09855}.Release|Any CPU.ActiveCfg = Release|x86
+		{C2438AFA-6E6A-4144-A0B7-42413DAA6921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2438AFA-6E6A-4144-A0B7-42413DAA6921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2438AFA-6E6A-4144-A0B7-42413DAA6921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2438AFA-6E6A-4144-A0B7-42413DAA6921}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
