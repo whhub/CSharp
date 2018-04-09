@@ -51,31 +51,35 @@ namespace EIMPrint
 
         private void Print(WrapPanel obj)
         {
-            GetPrintDialog();
+            //GetPrintDialog();
 
-            foreach (var image in obj.Children.OfType<Image>())
-            {
-                //var rtb = RenderTargetBitmap(image);
+            //foreach (var image in obj.Children.OfType<Image>())
+            //{
+            //    //var rtb = RenderTargetBitmap(image);
 
-                //var label = new Label
-                //{
-                //    Background = new SolidColorBrush(Color.FromRgb(28, 41, 48)),
-                //    Content = new Image() { Source = rtb, Stretch = Stretch.UniformToFill }
-                //};
+            //    //var label = new Label
+            //    //{
+            //    //    Background = new SolidColorBrush(Color.FromRgb(28, 41, 48)),
+            //    //    Content = new Image() { Source = rtb, Stretch = Stretch.UniformToFill }
+            //    //};
 
-                //var visualBrush = new VisualBrush(label);
-                var visualBrush = new ImageBrush(image.Source);
-                double margin = 5;
-                var printRect = GetPrintRect(image.RenderSize, margin);
+            //    //var visualBrush = new VisualBrush(label);
+            //    var visualBrush = new ImageBrush(image.Source);
+            //    double margin = 5;
+            //    var printRect = GetPrintRect(image.RenderSize, margin);
 
-                var drawingVisual = new DrawingVisual();
-                using (DrawingContext context = drawingVisual.RenderOpen())
-                {
-                    context.DrawRectangle(visualBrush, null, printRect);
-                }
-                //_printDialog.PrintVisual(image as Visual, image.ToString());
-                _printDialog.PrintVisual(drawingVisual, image.Name);
-            }
+            //    var drawingVisual = new DrawingVisual();
+            //    using (DrawingContext context = drawingVisual.RenderOpen())
+            //    {
+            //        context.DrawRectangle(visualBrush, null, printRect);
+            //    }
+            //    //_printDialog.PrintVisual(image as Visual, image.ToString());
+            //    _printDialog.PrintVisual(drawingVisual, image.Name);
+            //}
+
+            var printer = new EIMPrinter.EIMPrinter();
+            //printer.Print(@"e:\Back.png");
+            printer.Print(@"http://www.runoob.com/wp-content/uploads/2016/02/react.png");
         }
 
 
