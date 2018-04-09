@@ -51,7 +51,7 @@ namespace EIMPrint
 
         private void Print(WrapPanel obj)
         {
-            //GetPrintDialog();
+            GetPrintDialog();
 
             //foreach (var image in obj.Children.OfType<Image>())
             //{
@@ -77,9 +77,30 @@ namespace EIMPrint
             //    _printDialog.PrintVisual(drawingVisual, image.Name);
             //}
 
+            //foreach (var userControl in obj.Children.OfType<UserControl>())
+            //{
+            //    var visualBrush = new VisualBrush(userControl);
+            //    var printRect = new Rect(new Point(0, 0), new Size(_printDialog.PrintableAreaWidth, _printDialog.PrintableAreaHeight));
+
+            //    var drawingVisual = new DrawingVisual();
+            //    using (DrawingContext context = drawingVisual.RenderOpen())
+            //    {
+            //        context.DrawRectangle(visualBrush, null, printRect);
+            //    }
+            //    _printDialog.PrintVisual(drawingVisual, DateTime.Now.ToString());
+            //}
+
+
+            var cover = new Cover();
+            var coverViewModel = new CoverViewModel {Name = "张中亚", Company = "上海联影智慧医疗投资管理有限公司"};
+            cover.DataContext = coverViewModel;
+            
+
+
             var printer = new EIMPrinter.EIMPrinter();
             //printer.Print(@"e:\Back.png");
-            printer.Print(@"http://www.runoob.com/wp-content/uploads/2016/02/react.png");
+            ////printer.Print(@"http://www.runoob.com/wp-content/uploads/2016/02/react.png");
+            printer.Print(cover);
         }
 
 

@@ -16,6 +16,19 @@ namespace EIMPrinter
             GetPrintDialog();
         }
 
+        public void Print(FrameworkElement userControl)
+        {
+            var visualBrush = new VisualBrush(userControl);
+            var printRect = new Rect(new Point(0, 0), new Size(_printDialog.PrintableAreaWidth, _printDialog.PrintableAreaHeight));
+
+            var drawingVisual = new DrawingVisual();
+            using (DrawingContext context = drawingVisual.RenderOpen())
+            {
+                context.DrawRectangle(visualBrush, null, printRect);
+            }
+            _printDialog.PrintVisual(drawingVisual, DateTime.Now.ToString());
+        }
+
         /// <summary>
         /// Print Images by url
         /// </summary>
@@ -42,7 +55,8 @@ namespace EIMPrinter
                     var drawingVisual = new DrawingVisual();
                     using (DrawingContext context = drawingVisual.RenderOpen())
                     {
-                        context.DrawRectangle(visualBrush, null, printRect);
+                        //context.DrawRectangle(visualBrush, null, printRect);
+                        context.DrawImage(image, printRect);
                     }
 
                     //double scale = GetImmuteScale(printRect.Size);
