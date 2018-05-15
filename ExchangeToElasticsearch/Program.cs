@@ -24,17 +24,22 @@ namespace ExchangeToElasticsearch
                 Console.WriteLine("Sample Mail: ");
 
                 var sampleMessage = messages[0];
-                var messageBytes = sampleMessage.MessageToByte();
-
-                var mimeMessage = Mail_Message.ParseFromByte(messageBytes);
-                Console.WriteLine("Sender : {0}", mimeMessage.From);
-                var receiver = String.Join(";", mimeMessage.To);
-                Console.WriteLine("Receiver: {0}", receiver);
-                Console.WriteLine("Body: {0}", mimeMessage.BodyText ?? "Content is null");
+                IndexMessage(sampleMessage);
             }
 
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
+        }
+
+        private static void IndexMessage(POP3_ClientMessage sampleMessage)
+        {
+            var messageBytes = sampleMessage.MessageToByte();
+
+            var mimeMessage = Mail_Message.ParseFromByte(messageBytes);
+            Console.WriteLine("Sender : {0}", mimeMessage.From);
+            var receiver = String.Join(";", mimeMessage.To);
+            Console.WriteLine("Receiver: {0}", receiver);
+            Console.WriteLine("Body: {0}", mimeMessage.BodyText ?? "Content is null");
         }
     }
 }
