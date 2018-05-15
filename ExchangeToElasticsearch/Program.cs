@@ -25,6 +25,8 @@ namespace ExchangeToElasticsearch
 
                 var sampleMessage = messages[0];
                 IndexMessage(sampleMessage);
+
+                sampleMessage.MarkForDeletion();
             }
 
             Console.WriteLine("Press any key to continue");
