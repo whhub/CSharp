@@ -35,7 +35,10 @@ namespace ExchangeToElasticsearch
                 Console.WriteLine("Sample Mail: ");
 
                 var sampleMessage = messages[0];
-                IndexMessage(sampleMessage);
+                var mail = IndexMessage(sampleMessage);
+                var respose = elasticSearchClient.Index(mail, idx => idx.Index("mail"));
+                Console.WriteLine("Indexed a mail with respose : {0}", respose.Result.ToString());
+                Console.WriteLine();
 
                 sampleMessage.MarkForDeletion();
             }
@@ -44,7 +47,7 @@ namespace ExchangeToElasticsearch
             Console.ReadKey();
         }
 
-        private static void IndexMessage(POP3_ClientMessage sampleMessage)
+        private static Mail IndexMessage(POP3_ClientMessage sampleMessage)
         {
             var messageBytes = sampleMessage.MessageToByte();
 
@@ -53,6 +56,8 @@ namespace ExchangeToElasticsearch
             var receiver = String.Join(";", mimeMessage.To);
             Console.WriteLine("Receiver: {0}", receiver);
             Console.WriteLine("Body: {0}", mimeMessage.BodyText ?? "Content is null");
+
+            return new Mail();
         }
     }
 }
