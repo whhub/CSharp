@@ -2,6 +2,7 @@
 using System.Linq;
 using LumiSoft.Net.Mail;
 using LumiSoft.Net.POP3.Client;
+using Nest;
 
 namespace ExchangeToElasticsearch
 {
@@ -13,6 +14,16 @@ namespace ExchangeToElasticsearch
             var pwd = "xAcmQ3gg";
             var pop3_server = "smtp.united-imaging.com";
             var pop3_port = 995;
+
+            // Connect Elasticsearch
+            var node = new Uri("http://localhost:9200");
+            var setting = new ConnectionSettings(node);
+            var elasticSearchClient = new ElasticClient(setting);
+            
+            // Index Mapping
+            var descriptor = new CreateIndexDescriptor("mail")
+                .Mappings(ms=>ms.Map<Mail>(m=>m.AutoMap()));
+            elasticSearchClient.CreateIndex(descriptor);
 
             using (var pop3 = new POP3_Client())
             {
