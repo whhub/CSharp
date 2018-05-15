@@ -52,12 +52,20 @@ namespace ExchangeToElasticsearch
             var messageBytes = sampleMessage.MessageToByte();
 
             var mimeMessage = Mail_Message.ParseFromByte(messageBytes);
-            Console.WriteLine("Sender : {0}", mimeMessage.From);
-            var receiver = String.Join(";", mimeMessage.To);
-            Console.WriteLine("Receiver: {0}", receiver);
             Console.WriteLine("Body: {0}", mimeMessage.BodyText ?? "Content is null");
 
-            return new Mail();
+            var mail = new Mail();
+            mail.From = mimeMessage.From.ToArray().Select(m=>m.Address).ToArray();
+            mail.To = mimeMessage.To.Mailboxes.Select(m => m.Address).ToArray();
+            var cc = mimeMessage.Cc;
+            if(null != cc) {mail.Cc = cc.Mailboxes.Select(m => m.Address).ToArray();}
+            var bcc = mimeMessage.Bcc;
+            if(null != bcc) {mail.Bcc = bcc.Mailboxes.Select(m => m.Address).ToArray();}
+            mail.Subject = mimeMessage.Subject;
+            mail.Body = mimeMessage.BodyText;
+            mail.SentTime = mimeMessage.Date;
+
+            return mail;
         }
     }
 }

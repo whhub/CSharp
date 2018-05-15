@@ -6,7 +6,7 @@ namespace ExchangeToElasticsearch
     [ElasticsearchType(Name="Mail")]
     class Mail
     {
-        public string From { get; set; }
+        public string[] From { get; set; }
         public string[] To { get; set; }
         public string[] Cc { get; set; }
         public string[] Bcc { get; set; }
