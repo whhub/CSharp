@@ -9,6 +9,7 @@ namespace ExchangeToElasticsearch
     {
         private const string INNER_DOMAIN = "@united-imaging.com";
 
+        public string MessageId { get; set; }
         public string[] From { get; set; }
         public string[] To { get; set; }
         public string[] Cc { get; set; }
