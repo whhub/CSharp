@@ -7,7 +7,7 @@ namespace ExchangeToElasticsearch
     [ElasticsearchType(Name="Mail")]
     class Mail
     {
-        private const string INNER_DOMAIN = "@united-imaging.com";
+        private const string InnerDomain = "@united-imaging.com";
 
         public string MessageId { get; set; }
         public string[] From { get; set; }
@@ -19,15 +19,9 @@ namespace ExchangeToElasticsearch
         public string[] Attachments { get; set; }
         public DateTime SentTime { get; set; }
 
-        public bool HasSentOut
-        {
-            get
-            {
-                return (null != To && To.Any(address => !address.Contains(INNER_DOMAIN)))
-                       || (null != Cc && Cc.Any(address => !address.Contains(INNER_DOMAIN)))
-                       || (null != Bcc && Bcc.Any(address => !address.Contains(INNER_DOMAIN)));
-            }
-        }
+        public bool HasSentOut => (null != To && To.Any(address => !address.Contains(InnerDomain)))
+                                  || (null != Cc && Cc.Any(address => !address.Contains(InnerDomain)))
+                                  || (null != Bcc && Bcc.Any(address => !address.Contains(InnerDomain)));
 
         public bool HasAttachment => null != Attachments && Attachments.Length > 0;
     }

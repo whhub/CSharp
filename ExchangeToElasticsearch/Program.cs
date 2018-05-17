@@ -32,6 +32,7 @@ namespace ExchangeToElasticsearch
                 .Mappings(ms=>ms.Map<Mail>(m=>m.AutoMap()));
             elasticSearchClient.CreateIndex(descriptor);
 
+            // Scheduled Mail Collecting
             while (true)
             {
                 using (var pop3 = new POP3_Client())
@@ -55,8 +56,9 @@ namespace ExchangeToElasticsearch
                         message.MarkForDeletion();
                     }
                     pop3.Disconnect();
-                    Thread.Sleep(5*60*1000);
                 }
+
+                Thread.Sleep(5 * 60 * 1000);
             }
 
             //Console.WriteLine("Press any key to continue");
