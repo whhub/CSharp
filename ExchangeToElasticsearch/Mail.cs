@@ -19,9 +19,16 @@ namespace ExchangeToElasticsearch
         public string[] Attachments { get; set; }
         public DateTime SentTime { get; set; }
 
-        public bool HasSentOut => (null != To && To.Any(address => !address.Contains(InnerDomain)))
-                                  || (null != Cc && Cc.Any(address => !address.Contains(InnerDomain)))
-                                  || (null != Bcc && Bcc.Any(address => !address.Contains(InnerDomain)));
+        public bool HasSentOut
+        {
+            get
+            {
+                return ((null != To && To.Any(address => !address.Contains(InnerDomain)))
+                       || (null != Cc && Cc.Any(address => !address.Contains(InnerDomain)))
+                       || (null != Bcc && Bcc.Any(address => !address.Contains(InnerDomain))))
+                       && (null != From && From.All(address => address.Contains(InnerDomain)));
+            }
+        }
 
         public bool HasAttachment => null != Attachments && Attachments.Length > 0;
     }

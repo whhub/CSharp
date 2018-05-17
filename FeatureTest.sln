@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOPTest", "FeatureTest\AOPTest.csproj", "{B45AEEA8-16C6-40CB-B0AB-413BFBF7D242}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlTest", "UserControlTest\UserControlTest.csproj", "{EBD82360-FEC5-4AC7-8278-A88BF67E31B8}"
@@ -74,14 +76,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{B3FCEEFF-D32
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlConnection", "SqlConnection\SqlConnection.csproj", "{4358603B-3FDC-43C9-B731-22DA52D5C5CC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mail", "Mail", "{63BF68C4-74A0-47B2-BF76-E720715129ED}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elasticsearch", "Elasticsearch", "{63BF68C4-74A0-47B2-BF76-E720715129ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeToElasticsearch", "ExchangeToElasticsearch\ExchangeToElasticsearch.csproj", "{44E3E36C-CB9A-4BE0-9FC7-8F36880BD141}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticSearchEditor", "ElasticSearchEditor\ElasticSearchEditor.csproj", "{0B4681D6-7B6E-4BB3-B197-1F4160553E97}"
+EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = FeatureTest.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -177,6 +178,10 @@ Global
 		{44E3E36C-CB9A-4BE0-9FC7-8F36880BD141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44E3E36C-CB9A-4BE0-9FC7-8F36880BD141}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44E3E36C-CB9A-4BE0-9FC7-8F36880BD141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4681D6-7B6E-4BB3-B197-1F4160553E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4681D6-7B6E-4BB3-B197-1F4160553E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4681D6-7B6E-4BB3-B197-1F4160553E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4681D6-7B6E-4BB3-B197-1F4160553E97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,5 +204,12 @@ Global
 		{87540A84-125D-4A1D-BF7F-D3E979046A50} = {9257E0F2-700D-4DF2-98DB-3713FE2A5D62}
 		{4358603B-3FDC-43C9-B731-22DA52D5C5CC} = {B3FCEEFF-D329-4437-BB42-CEC4990274BC}
 		{44E3E36C-CB9A-4BE0-9FC7-8F36880BD141} = {63BF68C4-74A0-47B2-BF76-E720715129ED}
+		{0B4681D6-7B6E-4BB3-B197-1F4160553E97} = {63BF68C4-74A0-47B2-BF76-E720715129ED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBC5ED55-5B6C-447A-8C00-18A0F64F3E15}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = FeatureTest.vsmdi
 	EndGlobalSection
 EndGlobal
