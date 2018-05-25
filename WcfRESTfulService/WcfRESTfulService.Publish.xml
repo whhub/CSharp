@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\hui.wang\Desktop\Publish\WcfRESTfulService" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/WcfRESTfulService.dll" publishTime="05/25/2018 17:14:10" />
+    <file relUrl="bin/WcfRESTfulService.pdb" publishTime="05/25/2018 17:14:10" />
+    <file relUrl="Web.config" publishTime="05/25/2018 17:20:43" />
+    <file relUrl="StudentService.svc" publishTime="05/25/2018 16:45:24" />
+  </publishProfile>
+</publishData>

@@ -86,6 +86,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceDemo", "WcfServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfClientDemo", "WcfClientDemo\WcfClientDemo.csproj", "{6DD25379-39CC-482C-B507-1AD4930FDFFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfRESTfulService", "WcfRESTfulService\WcfRESTfulService.csproj", "{A2542234-BEE6-45A6-95F1-CBBD5C6A396C}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = FeatureTest.vsmdi
@@ -198,6 +200,10 @@ Global
 		{6DD25379-39CC-482C-B507-1AD4930FDFFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DD25379-39CC-482C-B507-1AD4930FDFFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DD25379-39CC-482C-B507-1AD4930FDFFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2542234-BEE6-45A6-95F1-CBBD5C6A396C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2542234-BEE6-45A6-95F1-CBBD5C6A396C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2542234-BEE6-45A6-95F1-CBBD5C6A396C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2542234-BEE6-45A6-95F1-CBBD5C6A396C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -223,6 +229,7 @@ Global
 		{0B4681D6-7B6E-4BB3-B197-1F4160553E97} = {63BF68C4-74A0-47B2-BF76-E720715129ED}
 		{0D2F61B0-4DD6-43B3-91DB-CF7205908806} = {7BBE59A7-324F-4F43-919C-EF68A641EFF5}
 		{6DD25379-39CC-482C-B507-1AD4930FDFFD} = {7BBE59A7-324F-4F43-919C-EF68A641EFF5}
+		{A2542234-BEE6-45A6-95F1-CBBD5C6A396C} = {7BBE59A7-324F-4F43-919C-EF68A641EFF5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FBC5ED55-5B6C-447A-8C00-18A0F64F3E15}
