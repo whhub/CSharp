@@ -1,33 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D60F2AC2-20B8-4653-B613-98394E816D24}"
-	ProjectSection(SolutionItems) = preProject
-		FeatureTest.vsmdi = FeatureTest.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{73B1A6BC-FBF4-4CC7-8102-B97F2535DBF6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MEFLog", "MEFLog", "{2CF5B702-68AE-45EB-AA93-1AAC4BC41FA9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MEFCalculator", "MEFCalculator", "{71036D61-2D70-4FAC-BD68-47320E03FB70}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MAFCalculator", "MAFCalculator", "{DE218D75-2D48-4F27-A1D7-2C974DA4F058}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Using Non-MVVM Third-party Controls", "Using Non-MVVM Third-party Controls", "{075A22BD-1914-48D2-9ED6-A2A177F30E46}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Print", "Print", "{9257E0F2-700D-4DF2-98DB-3713FE2A5D62}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{B3FCEEFF-D329-4437-BB42-CEC4990274BC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elasticsearch", "Elasticsearch", "{63BF68C4-74A0-47B2-BF76-E720715129ED}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCF", "WCF", "{7BBE59A7-324F-4F43-919C-EF68A641EFF5}"
-EndProject
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOPTest", "FeatureTest\AOPTest.csproj", "{B45AEEA8-16C6-40CB-B0AB-413BFBF7D242}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlTest", "UserControlTest\UserControlTest.csproj", "{EBD82360-FEC5-4AC7-8278-A88BF67E31B8}"
@@ -38,7 +11,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestExample", "FilmingM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestExample.UT", "FilmingModelUnitTest\UnitTestExample.UT.csproj", "{FC505042-C772-4392-BC32-A94F35717556}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D60F2AC2-20B8-4653-B613-98394E816D24}"
+	ProjectSection(SolutionItems) = preProject
+		FeatureTest.vsmdi = FeatureTest.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{73B1A6BC-FBF4-4CC7-8102-B97F2535DBF6}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEFConsole", "MEFConsole\MEFConsole.csproj", "{EEFE188E-3CD5-4B4C-A92E-A696589CEA08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MEFLog", "MEFLog", "{2CF5B702-68AE-45EB-AA93-1AAC4BC41FA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILog", "ILog\ILog.csproj", "{62FFC9D3-E02F-416F-B8EB-69BB1F218482}"
 EndProject
@@ -48,7 +32,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileLog", "FileLog\FileLog.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEFConsoleHost", "MEFConsoleHost\MEFConsoleHost.csproj", "{093C6F1C-E813-41F1-93A5-08C8A5714A83}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MEFCalculator", "MEFCalculator", "{71036D61-2D70-4FAC-BD68-47320E03FB70}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEFCalculator", "MEFCalculator\MEFCalculator.csproj", "{76036C9B-515F-4C07-8CBC-45D19F1BAAA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MAFCalculator", "MAFCalculator", "{DE218D75-2D48-4F27-A1D7-2C974DA4F058}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calc1Contract", "Calc1Contract\Calc1Contract.csproj", "{D039DCF6-E3DC-4E8B-BAC8-ED716CF78677}"
 EndProject
@@ -68,21 +56,31 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.UT", "TicTacToe.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Services", "TicTacToe.Services\TicTacToe.Services.csproj", "{1182B05B-FBCE-4C23-8DA5-23E20523A52F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Using Non-MVVM Third-party Controls", "Using Non-MVVM Third-party Controls", "{075A22BD-1914-48D2-9ED6-A2A177F30E46}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingNonMVVMElements", "UsingNonMVVMElements\UsingNonMVVMElements.csproj", "{B7A53FC8-9EEC-4B71-9725-F2D4D5770CDF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageTests", "LanguageTests\LanguageTests.csproj", "{CEDE3347-B7EE-461D-B779-48972DB09855}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemTest", "FileSystemTest\FileSystemTest.csproj", "{C2438AFA-6E6A-4144-A0B7-42413DAA6921}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Print", "Print", "{9257E0F2-700D-4DF2-98DB-3713FE2A5D62}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EIMPrint", "EIMPrint\EIMPrint.csproj", "{472D7217-3ADB-4AF7-A3B8-2F3C8FB8CF75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EIMPrinter", "EIMPrinter\EIMPrinter.csproj", "{87540A84-125D-4A1D-BF7F-D3E979046A50}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{B3FCEEFF-D329-4437-BB42-CEC4990274BC}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlConnection", "SqlConnection\SqlConnection.csproj", "{4358603B-3FDC-43C9-B731-22DA52D5C5CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elasticsearch", "Elasticsearch", "{63BF68C4-74A0-47B2-BF76-E720715129ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeToElasticsearch", "ExchangeToElasticsearch\ExchangeToElasticsearch.csproj", "{44E3E36C-CB9A-4BE0-9FC7-8F36880BD141}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticSearchEditor", "ElasticSearchEditor\ElasticSearchEditor.csproj", "{0B4681D6-7B6E-4BB3-B197-1F4160553E97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCF", "WCF", "{7BBE59A7-324F-4F43-919C-EF68A641EFF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceDemo", "WcfServiceDemo\WcfServiceDemo.csproj", "{0D2F61B0-4DD6-43B3-91DB-CF7205908806}"
 EndProject
@@ -91,6 +89,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfRESTfulService", "WcfRESTfulService\WcfRESTfulService.csproj", "{A2542234-BEE6-45A6-95F1-CBBD5C6A396C}"
 EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = FeatureTest.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -232,8 +233,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FBC5ED55-5B6C-447A-8C00-18A0F64F3E15}
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = FeatureTest.vsmdi
 	EndGlobalSection
 EndGlobal
