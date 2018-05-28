@@ -19,6 +19,12 @@ namespace ExchangeToElasticsearch
         public string[] Attachments { get; set; }
         public DateTime SentTime { get; set; }
 
+        //TODO: Access people soft view web service, to get hierarchy
+        public bool HasSentToSupervisor { get; set; }
+
+        public bool FromManagership { get; set; }
+
+
         public bool HasSentOut
         {
             get
