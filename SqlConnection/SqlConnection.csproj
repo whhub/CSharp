@@ -48,9 +48,9 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.ManagedDataAccess" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

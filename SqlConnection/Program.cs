@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Data.OracleClient;
+using Oracle.ManagedDataAccess.Client;
 
 namespace SqlConnection
 {
