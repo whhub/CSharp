@@ -25,5 +25,19 @@ namespace WcfRESTfulService
             ResponseFormat = WebMessageFormat.Json,
             UriTemplate = "GetStudentList")]
         IList<Student> GetStudentList();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "GetString")]
+        string GetString();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "GetStringList")]
+        IEnumerable<string> GetStringList();
     }
 }

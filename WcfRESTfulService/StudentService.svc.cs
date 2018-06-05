@@ -20,5 +20,15 @@ namespace WcfRESTfulService
         {
             return UserList.Instance.Users;
         }
+
+        public string GetString()
+        {
+            return "foo";
+        }
+
+        public IEnumerable<string> GetStringList()
+        {
+            return new List<string> {"foo1", "foo2"};
+        }
     }
 }
