@@ -13,6 +13,69 @@ namespace EmployeeWebService
     // NOTE: In order to launch WCF Test Client for testing this service, please select EmployeeService.svc or EmployeeService.svc.cs at the Solution Explorer and start debugging.
     public class EmployeeService : IEmployeeService
     {
+        private static object _obj = new object();
+        private static List<Employee> _allEmployees = new List<Employee>(); 
+        private static DateTime? _lastCachedTime; 
+
+        IEnumerable<Employee> GetAllEmployees()
+        {
+            if (EmployeeInfoHasCachedToday())
+            {
+                return _allEmployees;
+            }
+
+            lock (_obj)
+            {
+                if (EmployeeInfoHasCachedToday())
+                {
+                    return _allEmployees;
+                }
+
+                //TODO: write in config file
+                string constr = @"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.6.204.13) (PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=HR92PRD)));User Id=ifpsis; Password=Asdf5623";
+                using (var con = new OracleConnection(constr))
+                {
+                    var employees = new List<Employee>();
+                    con.Open();
+                    Console.WriteLine("成功连接数据库");
+                    using (var com = con.CreateCommand())
+                    {
+                        var sql = "select * from PS_UIH_IFIS_VW";
+                        Console.WriteLine(sql);
+                        com.CommandText = sql;
+
+                        var reader = com.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            int i = 0;
+                            var employee = new Employee
+                            {
+                                Id = reader.Get<string>(i++),
+                                Name = reader.Get<string>(i++),
+                                Bu = reader.Get<string>(i++),
+                                Department = reader.Get<string>(i++),
+                                SuperiorId = reader.Get<string>(i)
+                            };
+
+                            Console.WriteLine(employee);
+                            employees.Add(employee);
+                        }
+                        _allEmployees.Clear();
+                        _allEmployees.AddRange(employees);
+                        _lastCachedTime = DateTime.Now;
+                    }
+                }
+
+            }
+            return _allEmployees;
+        }
+
+        private bool EmployeeInfoHasCachedToday()
+        {
+            return null != _lastCachedTime && _lastCachedTime.Value.Date == DateTime.Now.Date;
+        }
+
+
         public string GetString()
         {
             return "foo";
@@ -20,47 +83,26 @@ namespace EmployeeWebService
 
         public IEnumerable<string> GetSubordinates(string id)
         {
-            string constr = @"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.6.204.13) (PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=HR92PRD)));User Id=ifpsis; Password=Asdf5623";
+            GetAllEmployees();
 
-            IList<string> subOrdinates = new List<string>();
+            List<string> subOrdinates = new List<string>();
             Queue<string> idQueue = new Queue<string>();
             idQueue.Enqueue(id);
 
-            var con = new OracleConnection(constr);
-            try
+            while (idQueue.Count > 0)
             {
-                con.Open();
-                Console.WriteLine("成功连接数据库");
-                while (idQueue.Count>0)
+                var currentId = idQueue.Dequeue();
+                Console.WriteLine($"Under {currentId}");
+
+                var directleSubordinates = _allEmployees.Where(e => e.SuperiorId == currentId).Select(e => e.Id).Except(subOrdinates).ToArray();
+                subOrdinates.AddRange(directleSubordinates);
+                foreach (var directleSubordinate in directleSubordinates)
                 {
-                    var currentId = idQueue.Dequeue();
-                    var com = con.CreateCommand();
-                    var sql = string.Format("select OPRID from PS_UIH_IFIS_VW WHERE OPRID2 = '{0}'",currentId);
-                    Console.WriteLine(sql);
-                    com.CommandText = sql;
-                    var oracleDataReader = com.ExecuteReader();
-                    while (oracleDataReader.Read())
-                    {
-                        var subordinateId = oracleDataReader.GetString(0);
-                        Console.Write(subordinateId);
-                        if (!subOrdinates.Contains(subordinateId))
-                        {
-                            Console.WriteLine(" found");
-                            subOrdinates.Add(subordinateId);
-                            idQueue.Enqueue(subordinateId);
-                        }
-                    }
+                    idQueue.Enqueue(directleSubordinate);
+                    Console.WriteLine(directleSubordinate);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
 
-            finally
-            {
-                con.Close();
-            }
             return subOrdinates;
         }
 
