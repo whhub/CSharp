@@ -63,5 +63,10 @@ namespace EmployeeWebService
             }
             return subOrdinates;
         }
+
+        public string Subordinates(string id)
+        {
+            return string.Join(" OR ", GetSubordinates(id));
+        }
     }
 }

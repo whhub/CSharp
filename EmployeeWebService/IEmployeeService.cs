@@ -27,6 +27,13 @@ namespace EmployeeWebService
             UriTemplate = "GetSubordinates/Id={Id}")]
         IEnumerable<string> GetSubordinates(string id);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "Subordinates?Id={Id}")]
+        string Subordinates(string id);
+
     }
 
 }
