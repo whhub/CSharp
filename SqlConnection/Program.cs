@@ -57,8 +57,11 @@ namespace SqlConnection
 
 
             // 从 Oracle 读取数据
-            var subordinates = GetSubordinates("xiangyu.huang");
-            Console.WriteLine(string.Join(",", subordinates));
+            //var subordinates = GetSubordinates("xiangyu.huang");
+            //Console.WriteLine(string.Join(",", subordinates));
+            var employeeService = new EmployeeService();
+            Console.WriteLine(employeeService.Subordinates("xiangyu.huang"));
+            Console.WriteLine(employeeService.Subordinates("xiangyu.huang"));
 
 
             Console.WriteLine("Enter a key to exit");
