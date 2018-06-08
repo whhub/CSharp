@@ -34,6 +34,12 @@ namespace EmployeeWebService
             UriTemplate = "Subordinates?Id={Id}")]
         string Subordinates(string id);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "CacheEmployeeInfo")]
+        string CacheEmployeeInfo();
     }
 
 }

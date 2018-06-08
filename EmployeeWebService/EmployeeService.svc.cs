@@ -110,5 +110,12 @@ namespace EmployeeWebService
         {
             return string.Join(" OR ", GetSubordinates(id));
         }
+
+        public string CacheEmployeeInfo()
+        {
+            GetAllEmployees();
+            
+            return $"Employee Info Cached ? {_lastCachedTime??DateTime.MinValue}";
+        }
     }
 }
