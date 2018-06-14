@@ -117,5 +117,13 @@ namespace EmployeeWebService
             
             return $"Employee Info Cached ? {_lastCachedTime??DateTime.MinValue}";
         }
+
+        public string GetSupervisor(string id)
+        {
+            GetAllEmployees();
+
+            var employee = _allEmployees.FirstOrDefault(e => e.Id == id);
+            return  null == employee ? string.Empty : employee.SuperiorId;
+        }
     }
 }
