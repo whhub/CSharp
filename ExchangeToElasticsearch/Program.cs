@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Threading;
 using LumiSoft.Net.Mail;
 using LumiSoft.Net.MIME;
@@ -11,6 +14,8 @@ namespace ExchangeToElasticsearch
 {
     class Program
     {
+        private static string _supervisorServiceUrl = @"http://10.6.14.157:8008/EmployeeService.svc/Supervisor?Id=";
+
         static void Main()
         {
             var user = "softtester";
@@ -49,6 +54,7 @@ namespace ExchangeToElasticsearch
                         Console.WriteLine("Indexing Mail: {0} of {1}", i, messagesCount);
                         var message = messages[i];
                         var mail = IndexMessage(message);
+                        CheckMailToToSupervisor(mail);
                         var respose = elasticSearchClient.Index(mail, idx => idx.Index("mail"));
                         Console.WriteLine("Indexed a mail with respose : {0}", respose.Result.ToString());
                         Console.WriteLine();
@@ -63,6 +69,43 @@ namespace ExchangeToElasticsearch
 
             //Console.WriteLine("Press any key to continue");
             //Console.ReadKey();
+        }
+
+        private static void CheckMailToToSupervisor(Mail mail)
+        {
+            var from = mail.From.FirstOrDefault();
+            if (null == from) return;
+            Console.WriteLine($"Mail From {@from}");
+            var domainIndex = from.IndexOf(Mail.InnerDomain);
+            if (-1 == domainIndex) return;
+
+            var id = from.Substring(0, domainIndex);
+            Console.WriteLine($"Id: {@id}");
+            var supervisor = HttpGetSupervisor(id);
+            Console.WriteLine($"Supervisior: {@supervisor}");
+
+            mail.HasSentToSupervisor = (mail.To != null && mail.To.Any(address => address.Contains(supervisor)))
+                                       || (mail.Cc != null && mail.Cc.Any(address => address.Contains(supervisor)))
+                                       || (mail.Bcc != null && mail.Bcc.Any(address => address.Contains(supervisor)));
+        }
+
+        private static string HttpGetSupervisor(string id)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_supervisorServiceUrl + id);
+            request.Method = "GET";
+            request.ContentType = "text/json;charset=UTF-8";
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                using (Stream myResponseStream = response.GetResponseStream())
+                {
+                    if(null == myResponseStream) {return string.Empty;}
+                    StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
+                    string retString = myStreamReader.ReadToEnd();
+
+                    return retString.Substring(1,retString.Length-2); // remove ""
+                }
+            }
         }
 
         private static Mail IndexMessage(POP3_ClientMessage sampleMessage)
