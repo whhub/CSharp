@@ -14,14 +14,14 @@ namespace ExchangeToElasticsearch
 {
     class Program
     {
-        private static string _supervisorServiceUrl = @"http://10.6.14.157:8008/EmployeeService.svc/Supervisor?Id=";
+        private const string SupervisorServiceUrl = @"http://10.6.14.157:8008/EmployeeService.svc/Supervisor?Id=";
 
         static void Main()
         {
             var user = "softtester";
             var pwd = "xAcmQ3gg";
-            var pop3_server = "smtp.united-imaging.com";
-            var pop3_port = 995;
+            const string pop3Server = "smtp.united-imaging.com";
+            const int pop3Port = 995;
 
             // Connect Elasticsearch
             var node = new Uri("http://10.6.14.157:9200");
@@ -42,7 +42,7 @@ namespace ExchangeToElasticsearch
             {
                 using (var pop3 = new POP3_Client())
                 {
-                    pop3.Connect(pop3_server, pop3_port, true);
+                    pop3.Connect(pop3Server, pop3Port, true);
                     pop3.Login(user, pwd);
 
                     var messages = pop3.Messages;
@@ -75,14 +75,14 @@ namespace ExchangeToElasticsearch
         {
             var from = mail.From.FirstOrDefault();
             if (null == from) return;
-            Console.WriteLine($"Mail From {@from}");
-            var domainIndex = from.IndexOf(Mail.InnerDomain);
+            Console.WriteLine($"Mail From {from}");
+            var domainIndex = from.IndexOf(Mail.InnerDomain, StringComparison.Ordinal);
             if (-1 == domainIndex) return;
 
             var id = from.Substring(0, domainIndex);
-            Console.WriteLine($"Id: {@id}");
+            Console.WriteLine($"Id: {id}");
             var supervisor = HttpGetSupervisor(id);
-            Console.WriteLine($"Supervisior: {@supervisor}");
+            Console.WriteLine($"Supervisior: {supervisor}");
 
             mail.HasSentToSupervisor = (mail.To != null && mail.To.Any(address => address.Contains(supervisor)))
                                        || (mail.Cc != null && mail.Cc.Any(address => address.Contains(supervisor)))
@@ -91,7 +91,7 @@ namespace ExchangeToElasticsearch
 
         private static string HttpGetSupervisor(string id)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_supervisorServiceUrl + id);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(SupervisorServiceUrl + id);
             request.Method = "GET";
             request.ContentType = "text/json;charset=UTF-8";
 
