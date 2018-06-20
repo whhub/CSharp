@@ -11,31 +11,58 @@ namespace ActiveDirectoryConsole
     {
         static void Main(string[] args)
         {
-            GetALLOU();
+            GetAllAccounts();
             Console.WriteLine("Enter Any Key to Exit");
             Console.ReadKey();
         }
 
-        private static void GetALLOU()
+        private readonly IList<Account> _accounts = new List<Account>();
+        private const string InternetAccessPermissionGroupRegex = "WG_*";
+        private const string VpnPermissionGroupRegex = "SVN-*";
+        private const string MailboxPermissionGroup = "AuthorizedMailbox";
+        private const string UsbPermissionGroup = "EnabledUSB_R&W";
+
+
+        private const string LdapOuUsersOuUnitedImagingDcUnitedImagingDcCom = "LDAP://OU=Users,OU=United_Imaging,DC=united-imaging,DC=com";
+
+
+        private static void GetAllAccounts()
         {
-            var entry = new DirectoryEntry("LDAP://OU=United_Imaging,DC=united-imaging,DC=com");
-            var directorySearcher = new DirectorySearcher(entry);
-            directorySearcher.Filter = ("(objectClass=organizationalUnit)");
+            TraverseAdGroup(InternetAccessPermissionGroupRegex);
+            TraverseAdGroup(VpnPermissionGroupRegex);
+            TraverseAdGroup(MailboxPermissionGroup);
+            TraverseAdGroup(UsbPermissionGroup);
+        }
 
-            foreach (SearchResult resEnt in directorySearcher.FindAll())
+        private static void TraverseAdGroup(string cnRegex)
+        {
+            using (var entry = new DirectoryEntry(LdapOuUsersOuUnitedImagingDcUnitedImagingDcCom))
             {
-                Console.Write(resEnt.GetDirectoryEntry().Name.ToString());
-            }
+                using (var directorySearcher = new DirectorySearcher(entry))
+                {
+                    directorySearcher.Filter = $"(&(objectClass=group)(CN={cnRegex}))";
 
-            // 根据名字访问属性
-            //foreach (string key in entry.Properties.PropertyNames)
-            //{
-            //    Console.WriteLine(key + " = ");
-            //    foreach (var obj in entry.Properties[key])
-            //    {
-            //        Console.WriteLine("\t" + obj);
-            //    }
-            //}
+                    foreach (SearchResult resEnt in directorySearcher.FindAll())
+                    {
+                        var directoryEntry = resEnt.GetDirectoryEntry();
+                        Console.WriteLine(resEnt.Path);
+                        ListEntryProperties(directoryEntry);
+                    }
+                }
+            }
+        }
+
+        private static void ListEntryProperties(DirectoryEntry entry)
+        {
+            foreach (string key in entry.Properties.PropertyNames)
+            {
+                Console.WriteLine(key + " = ");
+                foreach (var obj in entry.Properties[key])
+                {
+                    Console.WriteLine("\t" + obj);
+                    
+                }
+            }
         }
     }
 }
