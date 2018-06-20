@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.DirectoryServices;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace ActiveDirectoryConsole
         }
 
         private readonly IList<Account> _accounts = new List<Account>();
+        private static readonly IList<Group> _groups = new List<Group>();
         private const string InternetAccessPermissionGroupRegex = "WG_*";
         private const string VpnPermissionGroupRegex = "SVN-*";
         private const string MailboxPermissionGroup = "AuthorizedMailbox";
@@ -44,16 +46,36 @@ namespace ActiveDirectoryConsole
 
                     foreach (SearchResult resEnt in directorySearcher.FindAll())
                     {
-                        var directoryEntry = resEnt.GetDirectoryEntry();
-                        Console.WriteLine(resEnt.Path);
-                        ListEntryProperties(directoryEntry);
+                        var groupEntry = resEnt.GetDirectoryEntry();
+                        ListEntryProperties(groupEntry);
+                        TraverseGroupMember(groupEntry);
                     }
                 }
             }
         }
 
+        private static void TraverseGroupMember(DirectoryEntry groupEntry)
+        {
+            var groupName = groupEntry.Properties["cn"][0] as string;
+            var groupDescription = groupEntry.Properties["Description"][0] as string;
+            var componentName = groupEntry.Properties["distinguishedName"][0] as string;
+            _groups.Add(new Group {Name = groupName, Description = groupDescription, DistinguishedName = componentName});
+
+            foreach (var member in groupEntry.Properties["member"])
+            {
+                var memberPath = $"LDAP://{member}";
+                using (var memberEntry = new DirectoryEntry(memberPath))
+                {
+                    ListEntryProperties(memberEntry);
+                }
+
+            }
+        }
+
+        [Conditional("DEBUG")]
         private static void ListEntryProperties(DirectoryEntry entry)
         {
+            Console.WriteLine(entry.Path);
             foreach (string key in entry.Properties.PropertyNames)
             {
                 Console.WriteLine(key + " = ");
