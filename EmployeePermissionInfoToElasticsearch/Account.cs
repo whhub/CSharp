@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Nest;
 
-namespace ActiveDirectoryConsole
+namespace EmployeePermissionInfoToElasticsearch
 {
     [ElasticsearchType(Name = "Account")]
     public class Account

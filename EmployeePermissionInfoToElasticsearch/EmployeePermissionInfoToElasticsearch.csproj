@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{58F49E6A-F7A1-4C36-924A-7F506F623C6E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ActiveDirectoryConsole</RootNamespace>
-    <AssemblyName>ActiveDirectoryConsole</AssemblyName>
+    <RootNamespace>EmployeePermissionInfoToElasticsearch</RootNamespace>
+    <AssemblyName>EmployeePermissionInfoToElasticsearch</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

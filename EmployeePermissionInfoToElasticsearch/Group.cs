@@ -1,6 +1,6 @@
 ﻿using Nest;
 
-namespace ActiveDirectoryConsole
+namespace EmployeePermissionInfoToElasticsearch
 {
     [ElasticsearchType(Name = "Group")]
     public class Group
