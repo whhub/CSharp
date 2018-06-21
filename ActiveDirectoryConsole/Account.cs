@@ -15,5 +15,7 @@ namespace ActiveDirectoryConsole
         public IList<Group> VpnPermissions { get; } = new List<Group>();
         public IList<Group> MailPermissions { get; } = new List<Group>();
         public IList<Group> UsbPermissions { get; } = new List<Group>();
+
+        public IList<Group> Groups = new List<Group>();
     }
 }
