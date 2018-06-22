@@ -8,11 +8,24 @@ namespace EmployeePermissionInfoToElasticsearch
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
+            if (args.Length < 1)
+            {
+                PrintUsage();
+                return;
+            }
+
+            //TODO: Index parameterization
+
             IndexAccounts(GetAllAccounts());
             Console.WriteLine("Enter Any Key to Exit");
             Console.ReadKey();
+        }
+
+        private static void PrintUsage()
+        {
+            Console.WriteLine("EmployeePermissionInfoToElasticsearch.exe ElasticsearchServer[:port] [username password]");
         }
 
         private const string LdapCn = "cn";
@@ -40,6 +53,7 @@ namespace EmployeePermissionInfoToElasticsearch
         private static void IndexAccounts(IEnumerable<Account> accounts)
         {
             // Connect Elasticsearch
+            // TODO: Console Usage
             var node = new Uri("http://10.6.14.157:9200");
             var elasticUser = "elastic";
             var elasticPwd = "123qwe";
