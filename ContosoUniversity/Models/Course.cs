@@ -21,8 +21,4 @@ namespace ContosoUniversity.Models
         public virtual Department Department { get; set; }
         public ICollection<Instructor> Instructors { get; set; }
     }
-
-    public class Department
-    {
-    }
 }
