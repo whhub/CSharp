@@ -169,6 +169,10 @@
     <Compile Include="Migrations\201806260125088_ModelPropertyAttribute.Designer.cs">
       <DependentUpon>201806260125088_ModelPropertyAttribute.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806260325323_ComplexDataModel.cs" />
+    <Compile Include="Migrations\201806260325323_ComplexDataModel.Designer.cs">
+      <DependentUpon>201806260325323_ComplexDataModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
@@ -245,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806260125088_ModelPropertyAttribute.resx">
       <DependentUpon>201806260125088_ModelPropertyAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806260325323_ComplexDataModel.resx">
+      <DependentUpon>201806260325323_ComplexDataModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
