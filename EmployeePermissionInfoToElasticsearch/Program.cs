@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.DirectoryServices;
+using System.IO;
 using System.Linq;
 using Nest;
 
@@ -10,15 +12,21 @@ namespace EmployeePermissionInfoToElasticsearch
     {
         static void Main(string[] args)
         {
-            if (args.Length < 1)
-            {
-                PrintUsage();
-                return;
-            }
+            //if (args.Length < 1)
+            //{
+            //    PrintUsage();
+            //    return;
+            //}
 
             //TODO: Index parameterization
 
-            IndexAccounts(GetAllAccounts());
+            foreach (SearchResult entry in GetEntries(LdapDcUnitedImagingDcCom, GroupFilter))
+            {
+                ListEntryProperties(entry);
+            }
+
+            //var allAccounts = GetAllAccounts();
+            //IndexAccounts(allAccounts);
             Console.WriteLine("Enter Any Key to Exit");
             Console.ReadKey();
         }
@@ -132,19 +140,24 @@ namespace EmployeePermissionInfoToElasticsearch
             }
         }
 
-        //[Conditional("DEBUG")]
-        //private static void ListEntryProperties(DirectoryEntry entry)
-        //{
-        //    Console.WriteLine(entry.Path);
-        //    foreach (string key in entry.Properties.PropertyNames)
-        //    {
-        //        Console.WriteLine(key + " = ");
-        //        foreach (var obj in entry.Properties[key])
-        //        {
-        //            Console.WriteLine("\t" + obj);
-                    
-        //        }
-        //    }
-        //}
+        [Conditional("DEBUG")]
+        private static void ListEntryProperties(SearchResult entry)
+        {
+            using (StreamWriter sw = new StreamWriter("c:/ad.txt",false))
+            {
+                Console.WriteLine(entry.Path);
+                sw.WriteLine(entry.Path);
+                foreach (string key in entry.Properties.PropertyNames)
+                {
+                    Console.WriteLine(key + " = ");
+                    sw.WriteLine(key + " = ");
+                    foreach (var obj in entry.Properties[key])
+                    {
+                        Console.WriteLine("\t" + obj);
+                        sw.WriteLine("\t" + obj);
+                    }
+                }
+            }
+        }
     }
 }
