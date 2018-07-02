@@ -20,7 +20,7 @@ namespace EmployeePermissionInfoToElasticsearch
 
             //TODO: Index parameterization
 
-            foreach (SearchResult entry in GetEntries(LdapDcUnitedImagingDcCom, GroupFilter))
+            foreach (SearchResult entry in GetEntries(LdapOuUnitedImagingDcUnitedImagingDcCom, PersonFilter))
             {
                 ListEntryProperties(entry);
             }
