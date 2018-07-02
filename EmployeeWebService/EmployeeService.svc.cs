@@ -94,12 +94,12 @@ namespace EmployeeWebService
                 var currentId = idQueue.Dequeue();
                 Console.WriteLine($"Under {currentId}");
 
-                var directleSubordinates = _allEmployees.Where(e => e.SuperiorId == currentId).Select(e => e.Id).Except(subOrdinates).ToArray();
-                subOrdinates.AddRange(directleSubordinates);
-                foreach (var directleSubordinate in directleSubordinates)
+                var directeSubordinates = _allEmployees.Where(e => e.SuperiorId == currentId).Select(e => e.Id).Except(subOrdinates).ToArray();
+                subOrdinates.AddRange(directeSubordinates);
+                foreach (var directeSubordinate in directeSubordinates)
                 {
-                    idQueue.Enqueue(directleSubordinate);
-                    Console.WriteLine(directleSubordinate);
+                    idQueue.Enqueue(directeSubordinate);
+                    Console.WriteLine(directeSubordinate);
                 }
             }
 
