@@ -83,7 +83,11 @@ namespace EmployeeWebService
 
         public IEnumerable<string> GetSubordinates(string id)
         {
+            if(id == Admin) {return new string[]{AllUsers};}
+
             GetAllEmployees();
+
+            if (id == Devops) id = GetSupervisor(id);
 
             List<string> subOrdinates = new List<string>();
             Queue<string> idQueue = new Queue<string>();
@@ -125,5 +129,9 @@ namespace EmployeeWebService
             var employee = _allEmployees.FirstOrDefault(e => e.Id == id);
             return  null == employee ? string.Empty : employee.SuperiorId;
         }
+
+        private const string Admin = "admin";
+        private const string Devops = "xiaobin.ling";
+        private const string AllUsers = "*";
     }
 }
