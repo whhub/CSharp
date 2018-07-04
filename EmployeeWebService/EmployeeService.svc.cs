@@ -37,7 +37,7 @@ namespace EmployeeWebService
                     Console.WriteLine("成功连接数据库");
                     using (var com = con.CreateCommand())
                     {
-                        var sql = "select * from PS_UIH_IFIS_VW";
+                        var sql = "select DISTINCT * from PS_UIH_IFIS_VW";
                         Console.WriteLine(sql);
                         com.CommandText = sql;
 
