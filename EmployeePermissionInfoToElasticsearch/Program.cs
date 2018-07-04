@@ -19,14 +19,16 @@ namespace EmployeePermissionInfoToElasticsearch
             //}
 
             //TODO: Index parameterization
-            IList<string> cns = new List<string>();
 
             foreach (SearchResult entry in GetEntries(LdapDcUnitedImagingDcCom, GroupFilter))
             {
-                cns.Add(GetEntryPropertyValue(entry, LdapCn));
+                var members = GetEntryPropertyValue(entry, LdapMember);
+                if (string.IsNullOrEmpty(members))
+                {
+                    Console.WriteLine("There is a group {0} of no member", GetEntryPropertyValue(entry, LdapCn));
+                }
             }
-            Console.WriteLine(cns.Count);
-            Console.WriteLine(cns.Distinct().Count());
+
 
 
             //foreach (SearchResult entry in GetEntries(LdapDcUnitedImagingDcCom, GroupFilter))
@@ -49,6 +51,7 @@ namespace EmployeePermissionInfoToElasticsearch
         private const string LdapDescription = "Description";
         private const string LdapDistinguishedName = "distinguishedName";
         private const string LdapMemberOf = "memberOf";
+        private const string LdapMember = "member";
         private const string LdapAcountName = "sAMAccountName";
         private const string LdapDepartment = "department";
 
