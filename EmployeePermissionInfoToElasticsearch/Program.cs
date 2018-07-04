@@ -19,11 +19,20 @@ namespace EmployeePermissionInfoToElasticsearch
             //}
 
             //TODO: Index parameterization
+            IList<string> cns = new List<string>();
 
-            foreach (SearchResult entry in GetEntries(LdapOuUnitedImagingDcUnitedImagingDcCom, PersonFilter))
+            foreach (SearchResult entry in GetEntries(LdapDcUnitedImagingDcCom, GroupFilter))
             {
-                ListEntryProperties(entry);
+                cns.Add(GetEntryPropertyValue(entry, LdapCn));
             }
+            Console.WriteLine(cns.Count);
+            Console.WriteLine(cns.Distinct().Count());
+
+
+            //foreach (SearchResult entry in GetEntries(LdapDcUnitedImagingDcCom, GroupFilter))
+            //{
+            //    ListEntryProperties(entry);
+            //}
 
             //var allAccounts = GetAllAccounts();
             //IndexAccounts(allAccounts);
