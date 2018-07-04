@@ -47,6 +47,13 @@ namespace EmployeeWebService
             ResponseFormat = WebMessageFormat.Json,
             UriTemplate = "Supervisor?Id={Id}")]
         string GetSupervisor(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "GetStaff")]
+        string GetStaff();
     }
 
 }

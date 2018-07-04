@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+using Newtonsoft.Json;
 using Oracle.ManagedDataAccess.Client;
 
 namespace EmployeeWebService
@@ -14,7 +11,7 @@ namespace EmployeeWebService
     public class EmployeeService : IEmployeeService
     {
         private static object _obj = new object();
-        private static List<Employee> _allEmployees = new List<Employee>(); 
+        private static readonly List<Employee> _allEmployees = new List<Employee>(); 
         private static DateTime? _lastCachedTime; 
 
         IEnumerable<Employee> GetAllEmployees()
@@ -129,6 +126,13 @@ namespace EmployeeWebService
             var employee = _allEmployees.FirstOrDefault(e => e.Id == id);
             return  null == employee ? string.Empty : employee.SuperiorId;
         }
+
+        public string GetStaff()
+        {
+            GetAllEmployees();
+            return JsonConvert.SerializeObject(_allEmployees);
+        }
+
 
         private const string Admin = "admin";
         private const string Devops = "xiaobin.ling";
