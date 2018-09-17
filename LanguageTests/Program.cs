@@ -13,12 +13,42 @@ namespace LanguageTests
 
             #region [--Inheritance Test--]
 
-            var b = new B();
-            b.MethodA();
+            //var b = new B();
+            //b.MethodA();
+
+            #endregion
+
+            #region [--Enum Flag Test--]
+
+            LogLevel logLevel = LogLevel.DEBUG + (int) LogLevel.INFO;
+            System.Console.WriteLine(logLevel.HasFlag(LogLevel.DEBUG));
 
             #endregion
         }
     }
+
+    #region [--Enum Flag Test--]
+
+    [Flags]
+    public enum LogLevel
+    {
+
+        NONE = 0,
+
+        DEBUG = 1,
+
+        INFO = 2,
+
+        WARNING = 4,
+
+        ERROR = 8,
+
+        EXCEPT = 16,
+
+        CRITICAL = 32,
+    }
+
+    #endregion
 
     #region [--Inheritance Test--]
 
